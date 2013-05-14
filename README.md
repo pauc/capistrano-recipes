@@ -8,5 +8,5 @@ Intented to used as a git submodule.
 
 # Usage
 
-    git submodule add git://github.com/recortable/capistrano-recipes.git
+    git submodule add git://github.com/recortable/capistrano-recipes.git config/recipes
 config/recipes
