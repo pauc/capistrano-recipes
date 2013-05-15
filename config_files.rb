@@ -8,8 +8,10 @@ namespace :config do
   end
   after "deploy:finalize_update", "config:symlink"
 
-  task :symlink_secret, roles: :app do
-    run "ln -nfs #{shared_path}/config/secret_token.rb #{release_path}/config/initializers/secret_token.rb"
+  task :upload_config, roles: :app do
+    run "mkdir -p #{shared_path}/config"
+    config_files.each do |file|
+      upload "config/#{file}", "#{shared_path}/config/#{file}"
+    end
   end
-  after "config:symlink", "config:symlink_secret"
 end
